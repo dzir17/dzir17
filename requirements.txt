@@ -1,4 +1,5 @@
 pyrogram
 tgcrypto
+pytgcalls
+nudenet
 python-dotenv
-telethon
