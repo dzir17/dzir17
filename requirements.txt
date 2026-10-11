@@ -1,3 +1,4 @@
-telethon
-python-telegram-bot
+pyrogram
+tgcrypto
 python-dotenv
+telethon
