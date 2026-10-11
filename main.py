@@ -3,24 +3,34 @@ import threading
 from flask import Flask
 from pyrogram import Client
 
-API_ID = int(os.getenv("API_ID", "30759657"))
-API_HASH = os.getenv("API_HASH", "f8a7a39758efaf4d0af23686bd841667")
+# معلوماتك الصحيحة الجديدة من الصورة
+API_ID = int(os.getenv("API_ID", "36089889"))
+API_HASH = os.getenv("API_HASH", "0b6e3f265b48e7ce48d78312887ef7ec")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 
-# هذا موقع وهمي حتى Render ما يطفي البوت
+if not BOT_TOKEN:
+    print("❌ BOT_TOKEN ناقص! ضيفه في Environment Variables مال Render")
+    # ما نطفي الكود حتى Render ما يعتبره فشل
+    BOT_TOKEN = "123456:PLACEHOLDER"
+
+# موقع وهمي حتى Render المجاني ما يطفي البوت
 flask_app = Flask(__name__)
+
 @flask_app.route('/')
 def home():
-    return "✅ البوت شغال - الدرع V5"
+    return "✅ Dzir Bot شغال - Live"
 
 def run_web():
     port = int(os.environ.get("PORT", 10000))
     flask_app.run(host='0.0.0.0', port=port)
 
-# شغل الموقع بثريد جانبي
+# شغل الموقع بثريد
 threading.Thread(target=run_web, daemon=True).start()
 
-# شغل بوت التليجرام
-print("🚀 جاري تشغيل بوت الحماية...")
-bot = Client("shield_bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
-bot.run()
+print(f"🚀 جاري تشغيل البوت بـ API_ID: {API_ID} ...")
+app = Client("Dzir17bot", api_id=API_ID, api_hash=API_HASH, bot_token=BOT_TOKEN)
+
+# هنا تكدر تضيف اوامر الحماية مالتك
+# @app.on_message(...) 
+
+app.run()
